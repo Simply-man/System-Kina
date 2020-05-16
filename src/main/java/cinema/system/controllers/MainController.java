@@ -1,25 +1,35 @@
 package cinema.system.controllers;
 
+import cinema.system.utils.FxmlUtils;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
+
+import java.io.IOException;
 
 public class MainController {
 
+    // Głównego okno w celu sterowania
     @FXML
-    private BorderPane MainBorderPain;
+    private BorderPane borderPane;
 
+    // Nasz kontroler z przyciskami
     @FXML
-    private TextField SearchInput;
+    private MenuButtonsController menuButtonsController;
 
-    @FXML
-    private Button SerachButton;
-
-
+    // Metoda uruchamiana się zaraz po wywołaniu się konstruktora
     @FXML
     private void initialize(){
-        SearchMenuController.setMainController(this);
+        menuButtonsController.setMainController(this);
     }
+
+    // Meotda centrująca nasz template w głównym oknie
+    public void setCenter(String fxmlpath){
+        borderPane.setCenter(FxmlUtils.fxmlLoader(fxmlpath));
+    }
+
 
 }

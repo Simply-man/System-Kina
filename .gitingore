@@ -1,3 +1,2 @@
-.idea.*
-target.*
-Cinema.*
+*iml
+target

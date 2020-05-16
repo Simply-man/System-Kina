@@ -1,12 +1,14 @@
 package cinema.system;
 
+import cinema.system.utils.FxmlUtils;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+
+    public static final String BORDER_PAIN_MAIN_FXML = "/fxml/BorderPainMain.fxml";
 
     public static void main(String[] args) {
         launch(args);
@@ -14,13 +16,18 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/fxml/BorderPaneMain.fxml"));
-        BorderPane borderPane = loader.load();
+
+        // ładowanie naszego BorderPaneMain
+        Pane borderPane = FxmlUtils.fxmlLoader(BORDER_PAIN_MAIN_FXML);
+
+        // Tworzenie sceny oraz załodowanie naszego BorderPainMain
         Scene scene = new Scene(borderPane);
 
+        // Dodanie sceny do naszego głównego okna (Stage)
         stage.setScene(scene);
         stage.setTitle("Cinema System");
         stage.show();
+
+
     }
 }

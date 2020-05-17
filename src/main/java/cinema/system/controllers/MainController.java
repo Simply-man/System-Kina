@@ -2,13 +2,7 @@ package cinema.system.controllers;
 
 import cinema.system.utils.FxmlUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
-
-import java.io.IOException;
 
 public class MainController {
 

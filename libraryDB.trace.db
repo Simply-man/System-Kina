@@ -1,0 +1,12 @@
+2020-05-17 01:29:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabela "AUTHORS" nie istnieje
+Table "AUTHORS" not found; SQL statement:
+DROP TABLE `AUTHORS`  [42102-193]
+2020-05-17 01:29:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabela "FILMS" nie istnieje
+Table "FILMS" not found; SQL statement:
+DROP TABLE `FILMS`  [42102-193]
+2020-05-17 01:29:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Tabela "CATEGORIES" nie istnieje
+Table "CATEGORIES" not found; SQL statement:
+DROP TABLE `CATEGORIES`  [42102-193]

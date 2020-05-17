@@ -1,5 +1,6 @@
 package cinema.system;
 
+import cinema.system.database.dbuitls.DbManager;
 import cinema.system.utils.FxmlUtils;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -28,6 +29,7 @@ public class Main extends Application {
         stage.setTitle("Cinema System");
         stage.show();
 
-
+        // Inicjalziacja bazy danych
+        DbManager.initDatabase();
     }
 }

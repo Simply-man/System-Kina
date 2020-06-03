@@ -16,6 +16,9 @@ public class Category implements BaseModel {
     @DatabaseField(columnName = "NAME", canBeNull = false, unique = true)
     private String name;
 
+    @ForeignCollectionField(columnName = "Film_ID")
+    private ForeignCollection<Films> films;
+
     public int getId() {
         return id;
     }
@@ -32,4 +35,11 @@ public class Category implements BaseModel {
         this.name = name;
     }
 
+    public ForeignCollection<Films> getFilms() {
+        return films;
+    }
+
+    public void setFilms(ForeignCollection<Films> films) {
+        this.films = films;
+    }
 }

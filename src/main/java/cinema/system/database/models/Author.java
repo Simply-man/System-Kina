@@ -15,14 +15,30 @@ public class Author implements BaseModel {
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField(columnName = "NAME", canBeNull = false)
+    @DatabaseField(columnName = "NAME", canBeNull = false, unique = true)
     private String name;
 
-    @DatabaseField(columnName = "SURNAME", canBeNull = false)
+    @DatabaseField(columnName = "SURNAME", canBeNull = false, unique = true)
     private String surname;
 
     @ForeignCollectionField(eager = true)
     private ForeignCollection<Films> films;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public ForeignCollection<Films> getFilms() {
+        return films;
+    }
 
     public void setId(int id) {
         this.id = id;

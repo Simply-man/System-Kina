@@ -10,9 +10,9 @@ import java.sql.SQLException;
 
 public class FilmsDao extends CommonDao {
 
-    public FilmsDao(ConnectionSource connectionSource) {
+    public FilmsDao() {
 
-        super(connectionSource);
+        super();
     }
 
 

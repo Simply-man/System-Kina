@@ -1,8 +1,14 @@
 package cinema.system.controllers;
 
+import cinema.system.utils.DialogsUtils;
 import cinema.system.utils.FxmlUtils;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
+
+import java.util.Optional;
 
 public class MainController {
 
@@ -25,5 +31,29 @@ public class MainController {
         borderPane.setCenter(FxmlUtils.fxmlLoader(fxmlpath));
     }
 
+    // PLIK
+    // Zamkniecie aplikacji
+    public void closeApp() {
+        Optional<ButtonType> result = DialogsUtils.dialogsConfirmExit();
+        if(result.get()== ButtonType.OK){
+            Platform.exit();
+            System.exit(0);
+        }
 
+    }
+
+    // EDYCJA
+    // Wybor stylu 1 - Modena
+    public void setStyle1() {
+        Application.setUserAgentStylesheet(Application.STYLESHEET_MODENA);
+    }
+    // Wybor stylu 2 - Caspian
+    public void setStyle2() {
+        Application.setUserAgentStylesheet(Application.STYLESHEET_CASPIAN);
+    }
+
+    // POMOC - informacja o kinie
+    public void about() {
+        DialogsUtils.dialogsAboutApp();
+    }
 }

@@ -11,6 +11,7 @@ public class MenuButtonsController {
     public static final String CATEGORY_FILMS_FXML = "/fxml/Category.fxml";
     public static final String ADD_FILMS_FXML = "/fxml/AddFilms.fxml";
     public static final String ADD_CATEGORY_FXML = "/fxml/AddCategory.fxml";
+    public static final String ADD_AUTHOR_FXML = "/fxml/AddAuthor.fxml";
 
     // Odwołanie do pliku MainController
     @FXML
@@ -59,10 +60,14 @@ public class MenuButtonsController {
 
     // Setter dla MenuButtonsController aby móc wyświetlić poszczególne dane w głównym oknie
     // (referencja do MainController)
+    @FXML
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
-
-
+    @FXML
+    public void addAuthor() {
+        resetToggleButtons();
+        mainController.setCenter(ADD_AUTHOR_FXML);
+    }
 }

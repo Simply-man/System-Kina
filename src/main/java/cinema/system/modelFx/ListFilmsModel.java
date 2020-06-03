@@ -16,6 +16,7 @@ public class ListFilmsModel {
     public void init() throws AppExpections {
         FilmsDao filmsDao = new FilmsDao();
         List<Films> films = filmsDao.queryForAll(Films.class);
+        filmFxObservableList.clear();
         films.forEach(film ->{
             this.filmFxObservableList.add(ConverterFilm.convertToFilmFx(film));
         } );
@@ -27,5 +28,11 @@ public class ListFilmsModel {
 
     public void setFilmFxObservableList(ObservableList<FilmFx> filmFxObservableList) {
         this.filmFxObservableList = filmFxObservableList;
+    }
+
+    public void deleteFilm(FilmFx filmFx) throws AppExpections {
+        FilmsDao filmsDao = new FilmsDao();
+        filmsDao.deleteById(Films.class, filmFx.getId());
+        init();
     }
 }

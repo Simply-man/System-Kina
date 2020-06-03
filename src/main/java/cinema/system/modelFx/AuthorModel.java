@@ -36,7 +36,7 @@ public class AuthorModel {
     public void saveAuthorInDatabase() throws AppExpections {
         AuthorDao authorDao = new AuthorDao();
         Author author = ConverterAuthor.convertoAuthor(this.getAuthorFxObjectProperty());
-        authorDao.creatOrUpdate(author);
+        authorDao.createOrUpdate(author);
         this.init();
     }
 

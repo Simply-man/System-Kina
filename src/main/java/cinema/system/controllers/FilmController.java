@@ -5,11 +5,13 @@ import cinema.system.modelFx.CategoryFx;
 import cinema.system.modelFx.FilmModel;
 import cinema.system.utils.DialogsUtils;
 import cinema.system.utils.expections.AppExpections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class FilmController {
+
+    @FXML
+    private Button addButton;
     @FXML
     private ComboBox<CategoryFx> categoryComboBox;
     @FXML
@@ -34,28 +36,47 @@ public class FilmController {
             DialogsUtils.errorDialog(expections.getMessage());
         }
         bindings();
+        validation();
+    }
 
+    private void validation() {
+        this.addButton.disableProperty().bind(this.categoryComboBox.valueProperty().isNull()
+                                        .or(this.authorComboBox.valueProperty().isNull())
+                                        .or(this.titleTextField.textProperty().isEmpty())
+                                        .or(this.descTextArea.textProperty().isEmpty())
+                                        .or(this.releaseDatePicker.valueProperty().isNull()));
     }
 
     private void bindings() {
         //powiazanie list z combobox
         this.categoryComboBox.setItems(this.filmModel.getCategoryFxObservableList());
         this.authorComboBox.setItems(this.filmModel.getAuthorFxObservableList());
+
         //odwolanie sie do objectProperty i pobieranie danych
-        this.filmModel.getFilmFxObjectProperty().categoryFxProperty().bind(this.categoryComboBox.valueProperty());
-        this.filmModel.getFilmFxObjectProperty().authorFxProperty().bind(this.authorComboBox.valueProperty());
-        this.filmModel.getFilmFxObjectProperty().titleProperty().bind(this.titleTextField.textProperty());
-        this.filmModel.getFilmFxObjectProperty().descritpionProperty().bind(this.descTextArea.textProperty());
-        this.filmModel.getFilmFxObjectProperty().ratingProperty().bind(this.ratingSlider.valueProperty());
-        this.filmModel.getFilmFxObjectProperty().releaseDateProperty().bind(this.releaseDatePicker.valueProperty());
+        this.authorComboBox.valueProperty().bindBidirectional(this.filmModel.getFilmFxObjectProperty().authorFxProperty());
+        this.categoryComboBox.valueProperty().bindBidirectional(this.filmModel.getFilmFxObjectProperty().categoryFxProperty());
+        this.titleTextField.textProperty().bindBidirectional(this.filmModel.getFilmFxObjectProperty().titleProperty());
+        this.descTextArea.textProperty().bindBidirectional(this.filmModel.getFilmFxObjectProperty().descriptionProperty());
+        this.ratingSlider.valueProperty().bindBidirectional(this.filmModel.getFilmFxObjectProperty().ratingProperty());
+        this.releaseDatePicker.valueProperty().bindBidirectional(this.filmModel.getFilmFxObjectProperty().releaseDateProperty());
     }
 
     //przycisk - dodanie do bazy
     public void addFilmOnAction() {
         try {
             this.filmModel.saveFilmInDatabase();
-        } catch (AppExpections expections) {
-            DialogsUtils.errorDialog(expections.getMessage());
+            clearFields();
+        } catch (AppExpections appExpections) {
+            appExpections.printStackTrace();
         }
+    }
+
+    private void clearFields() {
+        this.authorComboBox.getSelectionModel().clearSelection();
+        this.categoryComboBox.getSelectionModel().clearSelection();
+        this.titleTextField.clear();
+        this.descTextArea.clear();
+        this.ratingSlider.setValue(1);
+        this.releaseDatePicker.getEditor().clear();
     }
 }

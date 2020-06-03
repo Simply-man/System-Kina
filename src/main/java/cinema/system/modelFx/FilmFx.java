@@ -1,7 +1,6 @@
 package cinema.system.modelFx;
 
 import javafx.beans.property.*;
-
 import java.time.LocalDate;
 
 public class FilmFx {
@@ -10,7 +9,7 @@ public class FilmFx {
     private ObjectProperty<CategoryFx> categoryFx = new SimpleObjectProperty<>();
     private ObjectProperty<AuthorFx> authorFx = new SimpleObjectProperty<>();
     private SimpleStringProperty title = new SimpleStringProperty();
-    private SimpleStringProperty descritpion = new SimpleStringProperty();
+    private SimpleStringProperty description = new SimpleStringProperty();
     private ObjectProperty<LocalDate> releaseDate = new SimpleObjectProperty<>();
     private IntegerProperty rating = new SimpleIntegerProperty();
     private ObjectProperty<LocalDate> addedDate = new SimpleObjectProperty<>(LocalDate.now());
@@ -63,16 +62,16 @@ public class FilmFx {
         this.title.set(title);
     }
 
-    public String getDescritpion() {
-        return descritpion.get();
+    public String getDescription() {
+        return description.get();
     }
 
-    public SimpleStringProperty descritpionProperty() {
-        return descritpion;
+    public SimpleStringProperty descriptionProperty() {
+        return description;
     }
 
-    public void setDescritpion(String descritpion) {
-        this.descritpion.set(descritpion);
+    public void setDescription(String description) {
+        this.description.set(description);
     }
 
 
@@ -80,7 +79,7 @@ public class FilmFx {
         return rating.get();
     }
 
-    public IntegerProperty ratingProperty() {
+    public IntegerProperty ratingProperty()  {
         return rating;
     }
 
@@ -111,4 +110,5 @@ public class FilmFx {
     public void setAddedDate(LocalDate addedDate) {
         this.addedDate.set(addedDate);
     }
+
 }

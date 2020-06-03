@@ -32,7 +32,7 @@ public class FilmModel {
         initCategoryList();
 
     }
-
+    // pobieranie kategorii
     private void initCategoryList() throws AppExpections {
         CategoryDao categoryDao = new CategoryDao();
         List<Category> categoryList= categoryDao.queryForAll(Category.class);
@@ -44,13 +44,14 @@ public class FilmModel {
             categoryFxObservableList.add(categoryFx);
         });
     }
-    //analogicznie jak wyzej
+    // Pobieranie authora
     private void initAuthorList() throws AppExpections {
         AuthorDao authorDao = new AuthorDao();
         List<Author> authorList = authorDao.queryForAll(Author.class);
-        this.authorFxObservableList.clear();
+        authorFxObservableList.clear();
         authorList.forEach(author -> {
             AuthorFx authorFx = ConverterAuthor.convertToAuthorFx(author);
+            authorFxObservableList.add(authorFx);
         });
     }
     //zapis ksiazki do bazy danych
@@ -67,8 +68,7 @@ public class FilmModel {
         films.setAuthor(author);
 
         FilmsDao filmsDao = new FilmsDao();
-        filmsDao.creatOrUpdate(films);
-
+        filmsDao.createOrUpdate(films);
     }
 
     public FilmFx getFilmFxObjectProperty() {

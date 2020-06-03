@@ -42,7 +42,7 @@
             <DatePicker fx:id="releaseDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Tytuł" GridPane.rowIndex="2" />
             <TextField fx:id="titleTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#addFilmOnAction" text="Dodaj" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" fx:id="addButton" onAction="#addFilmOnAction" text="Dodaj" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </children>

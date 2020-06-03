@@ -25,7 +25,7 @@ public abstract class CommonDao {
         this.connectionSource = DbManager.getConnectionSource();
     }
 
-    public <T extends BaseModel, I> void creatOrUpdate(BaseModel baseModel) throws AppExpections {
+    public <T extends BaseModel, I> void createOrUpdate(BaseModel baseModel) throws AppExpections {
         Dao<T, I> dao = getDao((Class<T>) baseModel.getClass());
         try {
             dao.createOrUpdate((T) baseModel);

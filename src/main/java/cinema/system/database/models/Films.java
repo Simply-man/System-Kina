@@ -88,7 +88,7 @@ public class Films implements BaseModel{
         this.isbn = isbn;
     }
 
-    public float getRating() {
+    public int getRating() {
         return rating;
     }
 

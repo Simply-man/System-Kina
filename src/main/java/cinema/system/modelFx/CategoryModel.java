@@ -1,8 +1,6 @@
 package cinema.system.modelFx;
 
 import cinema.system.database.dao.CategoryDao;
-import cinema.system.database.dao.CommonDao;
-import cinema.system.database.dbuitls.DbManager;
 import cinema.system.database.models.Category;
 import cinema.system.utils.converters.ConvertCategory;
 import cinema.system.utils.expections.AppExpections;
@@ -56,7 +54,7 @@ public class CategoryModel {
         CategoryDao categoryDao = new CategoryDao(); //polaczenie do bazy danych
         Category category = new Category();
         category.setName(name);
-        categoryDao.creatOrUpdate(category);
+        categoryDao.createOrUpdate(category);
         // zamkniecie polaczenia do bazy w commonDao
         init();
     }
@@ -91,7 +89,7 @@ public class CategoryModel {
         CategoryDao categoryDao = new CategoryDao();
         Category tempCategory = categoryDao.findById(Category.class, getCategory().getId());
         tempCategory.setName(getCategory().getName());
-        categoryDao.creatOrUpdate(tempCategory);
+        categoryDao.createOrUpdate(tempCategory);
         init();
     }
 

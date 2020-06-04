@@ -32,13 +32,14 @@ public class FilmController {
         this.filmModel = new FilmModel();
         try {
             this.filmModel.init();
-        } catch (AppExpections expections) {
-            DialogsUtils.errorDialog(expections.getMessage());
+        } catch (AppExpections appExpections) {
+            DialogsUtils.errorDialog(appExpections.getMessage());
         }
         bindings();
         validation();
     }
 
+    // walidacja dla przycisku "Dodaj" w dodaj filmy
     private void validation() {
         this.addButton.disableProperty().bind(this.categoryComboBox.valueProperty().isNull()
                                         .or(this.authorComboBox.valueProperty().isNull())
@@ -67,7 +68,7 @@ public class FilmController {
             this.filmModel.saveFilmInDatabase();
             clearFields();
         } catch (AppExpections appExpections) {
-            appExpections.printStackTrace();
+            DialogsUtils.errorDialog(appExpections.getMessage());
         }
     }
 

@@ -31,7 +31,8 @@ public abstract class CommonDao {
             dao.createOrUpdate((T) baseModel);
         } catch (SQLException e) {
             LOGGER.warn(e.getCause().getMessage());
-            throw new AppExpections("Nie mozna wprowadzic tej samej kategorii"); // wyjatek podczas wprowadzania tej samej nazwy
+            // wyjatek podczas wprowadzania tej samej nazwy
+            throw new AppExpections("Nie mozna wprowadzic tej samej kategorii");
         } finally {
             this.closeDbConnection();
         }

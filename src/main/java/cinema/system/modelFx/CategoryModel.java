@@ -55,7 +55,6 @@ public class CategoryModel {
         Category category = new Category();
         category.setName(name);
         categoryDao.createOrUpdate(category);
-        // zamkniecie polaczenia do bazy w commonDao
         init();
     }
 

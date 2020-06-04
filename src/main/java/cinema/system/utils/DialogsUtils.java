@@ -25,7 +25,7 @@ public class DialogsUtils {
         Alert informationAlert = new Alert(Alert.AlertType.INFORMATION);
         informationAlert.setTitle("O aplikacji");
         informationAlert.setHeaderText("Kino");
-        informationAlert.setContentText("AAAAAAA");
+        informationAlert.setContentText("Aplikacja prezentująca bibloteke filmową.");
         informationAlert.showAndWait();
     }
 

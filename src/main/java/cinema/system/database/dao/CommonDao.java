@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+// abstrakcyjna klasy odpowiadająca za dodawanie danych do bazy
 public abstract class CommonDao {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CommonDao.class);

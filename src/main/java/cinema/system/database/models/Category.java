@@ -5,11 +5,13 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
+// deklaracja tabeli categories
 @DatabaseTable(tableName = "CATEGORIES")
 public class Category implements BaseModel {
     public Category() {
     }
 
+    // tworzenie unikalnego ID
     @DatabaseField(generatedId = true)
     private int id;
 

@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class DbManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(DbManager.class);
 
-    private static final String JDBC_DRIVER_HD = "jdbc:h2:./libraryDB";
+    private static final String JDBC_DRIVER_HD = "jdbc:h2:./CinemaDB";
     private static final String USER = "admin";
     private static final String PASS = "admin";
 
@@ -30,6 +30,7 @@ public class DbManager {
         closeConnectionSource();
     }
 
+    // utworzenie połączenia z bazą danych
     private static void createConnectionSource(){
         try {
             connectionSource = new JdbcConnectionSource(JDBC_DRIVER_HD,USER, PASS);
@@ -38,6 +39,7 @@ public class DbManager {
         }
     }
 
+    // uzyskanie połączenia z bazą danych
     public static ConnectionSource getConnectionSource(){
         if(connectionSource == null){
             createConnectionSource();
@@ -45,6 +47,7 @@ public class DbManager {
         return connectionSource;
     }
 
+    // zamknięcie połączenia z bazą danych
     public static void closeConnectionSource(){
         if(connectionSource!=null){
             try {
@@ -55,6 +58,7 @@ public class DbManager {
         }
     }
 
+    // Stworzenie tabel w bazie danych
     private static void createTable(){
         try {
             TableUtils.createTableIfNotExists(connectionSource, Author.class);
@@ -65,6 +69,7 @@ public class DbManager {
         }
     }
 
+    // usunięcie tabel z bazy danych
     private  static  void  dropTable(){
         try {
             TableUtils.dropTable(connectionSource, Author.class, true);

@@ -9,6 +9,7 @@ public class ConverterFilm {
     public static Films convertToFilm(FilmFx filmFx){
         Films film = new Films();
         film.setId(filmFx.getId());
+        film.setTitle(filmFx.getTitle());
         film.setDescription(filmFx.getDescription());
         film.setRating(filmFx.getRating());
         film.setReleaseDate(utils.convertToDate(filmFx.getReleaseDate()));

@@ -6,7 +6,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
-
+// deklaracja tabeli Authors
 @DatabaseTable(tableName = "AUTHORS")
 public class Author implements BaseModel {
     public Author() {

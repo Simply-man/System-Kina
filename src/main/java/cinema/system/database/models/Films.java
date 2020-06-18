@@ -5,6 +5,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Date;
 
+// deklaracja tabeli FILMS
 @DatabaseTable(tableName = "FILMS")
 public class Films implements BaseModel{
 
@@ -14,9 +15,11 @@ public class Films implements BaseModel{
     public Films() {
     }
 
+    // tworzenie unikalnego ID
     @DatabaseField(generatedId = true)
     private int id;
 
+    // tworzenie pól w bazie danych
     @DatabaseField(columnName = AUTHOR_ID, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true, canBeNull = false)
     private Author author;
     @DatabaseField(columnName = CATEGORY_ID, foreign = true, foreignAutoRefresh = true, foreignAutoCreate = true, canBeNull = false)
